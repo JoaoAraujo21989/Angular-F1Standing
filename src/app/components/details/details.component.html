@@ -1,0 +1,17 @@
+<div style="margin: 30px;">
+<h1 style="color: blue;">Driver details</h1>
+    <dl>
+        <dt><h2>Name:</h2></dt>
+        <dd><p>{{pilot.Driver.givenName}} {{pilot.Driver.familyName}}</p></dd>
+        <dt><h2>Country: </h2></dt>
+        <dd><p>{{pilot.Driver.nationality}}</p></dd>
+        <dt><h2>Team: </h2></dt>
+        <dd><a href="{{pilot.Constructors.url}}">{{pilot.Constructors.name}}</a></dd>
+        <dt><h2>Birth: </h2></dt>
+        <dd><p>{{pilot.Driver.dateOfBirth | date:'fullDate' }}</p></dd>
+        <dt><h2>Biography: <a href="{{pilot.Driver.url}}"><button>Go</button></a></h2> </dt>
+    </dl>
+</div>
+
+
+

@@ -1,0 +1,70 @@
+<div style="margin: 20px;">
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Max" #input>
+  </mat-form-field>
+
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- permanentNumberDriver Column -->
+      <ng-container matColumnDef="permanentNumberDriver">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.Driver.permanentNumber}} </td>
+      </ng-container>
+
+      <!-- nationalityDriver Column -->
+      <ng-container matColumnDef="nationalityDriver">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nationality </th>
+        <td mat-cell *matCellDef="let row"> {{row.Driver.nationality}} </td>
+      </ng-container>
+
+      <!-- givenNameDriver Column -->
+      <ng-container matColumnDef="givenNameDriver">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Driver </th>
+        <td mat-cell *matCellDef="let row"> {{row.Driver.givenName}} </td>
+      </ng-container>
+
+      <!-- familyNameDriver Column -->
+      <ng-container matColumnDef="familyNameDriver">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+        <td mat-cell *matCellDef="let row"> {{row.Driver.familyName}} </td>
+      </ng-container>
+
+      <!-- nameConstructors Column -->
+      <ng-container matColumnDef="nameConstructors">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Constructors </th>
+        <td mat-cell *matCellDef="let row"> {{row.Constructors.name}} </td>
+      </ng-container>
+
+      <!-- pointsElement Column -->
+      <ng-container matColumnDef="pointsElement">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Points </th>
+        <td mat-cell *matCellDef="let row"> {{row.points}} </td>
+      </ng-container>
+
+      <!-- actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-button (click)="deleteRow(row)" style="margin-top: 5px; width: 70px; color: red;">Delete</button>
+
+          <button mat-button (click)="openDetails(row.Driver.permanentNumber)"
+            style="margin-top: 5px; margin-bottom: 5px; width: 70px;">Detalhes</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
